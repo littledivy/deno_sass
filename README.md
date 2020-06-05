@@ -10,10 +10,8 @@ Fast WASM SaSS compiler for Deno.
 ## Example
 
 ```typescript
-import { toVigenere, fromVigenere } from 'mod.ts';
-
-toVigenere("key", "string"); // "CXPSRE"
-fromVigenere("key", "CXPSRE"); // "string"
+import { compile } from "mod.ts";
+compile("a { color: #000; }");
 ```
 
 ## Building from source
