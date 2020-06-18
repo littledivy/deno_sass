@@ -5,13 +5,13 @@
 ![deno version](https://img.shields.io/badge/deno-1.0.5-success)
 [![vr scripts](https://badges.velociraptor.run/flat.svg)](https://velociraptor.run)
 
-Fast WASM SaSS compiler for Deno.
+> BREAKING CHANGE: Deno Sass now uses sass-rs crate that provides bindings to the official libsass lib. No more WASM.
 
 ## Example
 
 ```typescript
 import { compile } from "mod.ts";
-compile("a { color: #000; }");
+compile("a { color: #000; }").result;
 ```
 
 ## Building from source
@@ -20,19 +20,16 @@ compile("a { color: #000; }");
 
 - [deno](https://deno.land/)
 - [rust](https://www.rust-lang.org/)
-- [wasm-pack](https://rustwasm.github.io/wasm-pack/)
 
 ## Building
 ```bash
-$ deno run -A scripts/build.ts
+$ cargo build
 ```
 
-## Testing
-
-Requires `wasm.js` to be built first.
+## Example
 
 ```bash
-$ deno test
+$ deno run --unstable -A examples/compile.ts
 ```
 
 ### Contribution
