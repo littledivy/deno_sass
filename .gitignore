@@ -1,4 +1,4 @@
 # cargo build
 target/
-# wasm-pack
-pkg/
+.deno_plugin/
+_imported.scss
