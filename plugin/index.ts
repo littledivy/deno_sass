@@ -53,22 +53,16 @@ const core = Deno.core as {
 };
 
 const {
-  archive,
-  read_archive,
+  compile_str,
 } = core.ops();
 
 const textDecoder = new TextDecoder();
 const textEncoder = new TextEncoder();
 
-export function TarArchive(params: ArchiveParams) {
-  const response = core.dispatch(
-    archive,
-    textEncoder.encode(JSON.stringify(params)),
-  );
-  return JSON.parse(textDecoder.decode(response));
-}
-
-export function TarReadArchive(params: any) {
-  const response = core.dispatch(read_archive, textEncoder.encode(params));
+export function compile(code: string) {
+  let view = JSON.stringify({
+    content: code,
+  });
+  const response = core.dispatch(compile_str, textEncoder.encode(view));
   return JSON.parse(textDecoder.decode(response));
 }
