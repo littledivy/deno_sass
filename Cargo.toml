@@ -1,22 +1,15 @@
 [package]
 name = "deno-sass"
-description = "WASM bindings to grass sass compiler"
-version = "0.1.0"
+version = "0.0.1"
 authors = ["Divy Srivastava <dj.srivastava23@gmail.com>"]
 edition = "2018"
-publish = false
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-wasm-bindgen = "0.2.63"
-wee_alloc = { version = "0.4.5", optional = true }
-grass=""
-
-[profile.release]
-lto = true
-opt-level = "z"
-
-[features]
-default = ["wee_alloc"]
+deno_core = "0.45.0"
+sass-rs = "0.2.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+futures = "0.3.4"
