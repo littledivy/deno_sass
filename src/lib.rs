@@ -19,9 +19,17 @@ pub fn deno_plugin_init(interface: &mut dyn Interface) {
 }
 
 #[derive(Deserialize)]
-struct CompileArguments {
-    content: &str,
-    options: sass_rs::Options
+struct CompileArguments<'a> {
+    content: &'a str,
+    // output_style: sass_rs::OutputStyle,
+    // precision: usize,
+    // indented_syntax: bool,
+    // include_paths: Vec<String>,
+}
+
+#[derive(Serialize)]
+struct CompileResponse {
+    result: String
 }
 
 fn op_compile(
@@ -30,9 +38,15 @@ fn op_compile(
     _zero_copy: Option<ZeroCopyBuf>,
 ) -> Op {
     let params: CompileArguments = serde_json::from_slice(data).unwrap();
-    sass_rs::compile_string(params.content).unwrap();
-
-    let result = b"true";
-    let result_box: Buf = Box::new(*result);
+    let opt = sass_rs::Options {
+        output_style: sass_rs::OutputStyle::Nested,
+        precision: 10,
+        include_paths: vec!["/".to_string()],
+        indented_syntax: true
+    };
+    let mut response = CompileResponse {
+        result: sass_rs::compile_string(params.content, opt).unwrap()
+    };
+    let result_box: Buf = serde_json::to_vec(&response).unwrap().into_boxed_slice();
     Op::Sync(result_box)
 }
