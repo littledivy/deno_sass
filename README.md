@@ -7,6 +7,8 @@
 
 > BREAKING CHANGE: Deno Sass now uses sass-rs crate that provides bindings to the official libsass lib. No more WASM.
 
+The Deno SASS library.
+
 ## Example
 
 ```typescript
