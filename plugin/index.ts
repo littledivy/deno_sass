@@ -41,7 +41,6 @@ if (isDev) {
   });
 }
 
-
 // @ts-ignore
 const core = Deno.core as {
   ops: () => { [key: string]: number };
@@ -53,17 +52,19 @@ const core = Deno.core as {
   ): Uint8Array | undefined;
 };
 
-
 const {
   archive,
-  read_archive
+  read_archive,
 } = core.ops();
 
 const textDecoder = new TextDecoder();
 const textEncoder = new TextEncoder();
 
 export function TarArchive(params: ArchiveParams) {
-  const response = core.dispatch(archive, textEncoder.encode(JSON.stringify(params)));
+  const response = core.dispatch(
+    archive,
+    textEncoder.encode(JSON.stringify(params)),
+  );
   return JSON.parse(textDecoder.decode(response));
 }
 

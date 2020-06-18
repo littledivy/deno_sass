@@ -1,4 +1,4 @@
-import { ArchiveReader } from '../mod.ts';
+import { ArchiveReader } from "../mod.ts";
 
 let myZip = new ArchiveReader();
 
