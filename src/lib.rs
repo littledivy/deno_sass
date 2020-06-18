@@ -34,7 +34,7 @@ struct CompileResponse {
 
 fn op_compile(_interface: &mut dyn Interface, data: &[u8], _zero_copy: &mut [ZeroCopyBuf]) -> Op {
     let params: CompileArguments = serde_json::from_slice(data).unwrap();
-    let opt = sass_rs::Options {
+    let _opt = sass_rs::Options {
         output_style: sass_rs::OutputStyle::Nested,
         precision: 10,
         include_paths: vec!["/".to_string()],
