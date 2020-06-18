@@ -60,6 +60,10 @@ jobs:
           rm target/release/gn_root -Recurse -ErrorAction Ignore
           rm target/debug/gn_root -Recurse -ErrorAction Ignore
 
+      - name: Add msbuild to PATH
+        if: matrix.os == 'windows-latest'
+        uses: microsoft/setup-msbuild@v1.0.0
+
       - name: Install python
         uses: actions/setup-python@v1
         with:
