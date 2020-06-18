@@ -1,10 +1,10 @@
 import { prepare } from "../deps.ts";
 import { ArchiveParams } from "../types.ts";
 
-const filenameBase = "deno_tar";
+const filenameBase = "deno_sass";
 
 const PLUGIN_URL_BASE =
-  "https://github.com/divy-work/deno-tar/releases/latest/download";
+  "https://github.com/divy-work/deno-sass/releases/latest/download";
 
 const isDev = Deno.env.get("DEV");
 
@@ -30,13 +30,13 @@ if (isDev) {
   const rid = Deno.openPlugin(filename);
 } else {
   const pluginId = await prepare({
-    name: "autopilot_deno",
+    name: "deno_sass",
     printLog: true,
     checkCache: Boolean(Deno.env.get("CACHE")) || true,
     urls: {
-      darwin: `${PLUGIN_URL_BASE}/libautopilot_deno.dylib`,
-      windows: `${PLUGIN_URL_BASE}/autopilot_deno.dll`,
-      linux: `${PLUGIN_URL_BASE}/libautopilot_deno.so`,
+      darwin: `${PLUGIN_URL_BASE}/libdeno_sass.dylib`,
+      windows: `${PLUGIN_URL_BASE}/deno_sass.dll`,
+      linux: `${PLUGIN_URL_BASE}/libdeno_sass.so`,
     },
   });
 }

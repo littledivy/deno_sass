@@ -10,4 +10,4 @@ scripts:
       DEV: true
       DEBUG: true
   fmt: deno fmt && cargo fmt
-  build: deno run -A scripts/build.ts
+  build: cargo build
