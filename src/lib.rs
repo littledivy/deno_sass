@@ -22,9 +22,9 @@ pub fn deno_plugin_init(interface: &mut dyn Interface) {
 struct CompileArguments {
     content: String,
     output_style: String,
-    // precision: usize,
-    // indented_syntax: bool,
-    // include_paths: Vec<String>,
+    precision: usize,
+    indented_syntax: bool,
+    include_paths: Vec<String>,
 }
 
 #[derive(Serialize)]
