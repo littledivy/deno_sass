@@ -1,5 +1,6 @@
 import { prepare } from "../deps.ts";
-import { ArchiveParams } from "../types.ts";
+import { IOptions } from "../types/options.ts";
+import { defaultOptions } from "../types/default.ts";
 
 const filenameBase = "deno_sass";
 
@@ -59,9 +60,11 @@ const {
 const textDecoder = new TextDecoder();
 const textEncoder = new TextEncoder();
 
-export function compile(code: string) {
+export function compile(code: string, opts: IOptions) {
+  let viewOptions: IOptions = Object.assign({}, defaultOptions, opts);
   let view = JSON.stringify({
     content: code,
+    ...viewOptions
   });
   const response = core.dispatch(compile_str, textEncoder.encode(view));
   return JSON.parse(textDecoder.decode(response));
