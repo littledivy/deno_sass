@@ -21,7 +21,7 @@ pub fn deno_plugin_init(interface: &mut dyn Interface) {
 #[derive(Deserialize)]
 struct CompileArguments {
     content: String,
-    // output_style: sass_rs::OutputStyle,
+    output_style: String,
     // precision: usize,
     // indented_syntax: bool,
     // include_paths: Vec<String>,
@@ -34,15 +34,25 @@ struct CompileResponse {
 
 fn op_compile(_interface: &mut dyn Interface, data: &[u8], _zero_copy: &mut [ZeroCopyBuf]) -> Op {
     let params: CompileArguments = serde_json::from_slice(data).unwrap();
-    let _opt = sass_rs::Options {
-        output_style: sass_rs::OutputStyle::Nested,
-        precision: 10,
-        include_paths: vec!["/".to_string()],
-        indented_syntax: true,
+    let opt = sass_rs::Options {
+        output_style: str_to_style(&params.output_style),
+        precision: 5,
+        include_paths: vec![],
+        indented_syntax: false,
     };
-    let mut response = CompileResponse {
-        result: sass_rs::compile_string(&params.content, sass_rs::Options::default()).unwrap(),
+    let response = CompileResponse {
+        result: sass_rs::compile_string(&params.content, opt).unwrap(),
     };
     let result_box: Buf = serde_json::to_vec(&response).unwrap().into_boxed_slice();
     Op::Sync(result_box)
+}
+
+fn str_to_style(style: &str) -> sass_rs::OutputStyle {
+    match style {
+        "nested" => sass_rs::OutputStyle::Nested,
+        "expanded" => sass_rs::OutputStyle::Expanded,
+        "compact" => sass_rs::OutputStyle::Compact,
+        "compressed" => sass_rs::OutputStyle::Compressed,
+        _ => sass_rs::OutputStyle::Nested
+    }
 }
