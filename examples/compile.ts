@@ -2,6 +2,7 @@ import { compile } from "../mod.ts";
 
 console.log(
   compile(`
+    @import "examples/imported";
     $bg: #eee;
     body {
       color: $bg;
