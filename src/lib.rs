@@ -36,9 +36,9 @@ fn op_compile(_interface: &mut dyn Interface, data: &[u8], _zero_copy: &mut [Zer
     let params: CompileArguments = serde_json::from_slice(data).unwrap();
     let opt = sass_rs::Options {
         output_style: str_to_style(&params.output_style),
-        precision: 5,
-        include_paths: vec![],
-        indented_syntax: false,
+        precision: params.precision,
+        include_paths: params.include_paths,
+        indented_syntax: params.indented_syntax,
     };
     let response = CompileResponse {
         result: sass_rs::compile_string(&params.content, opt).unwrap(),
