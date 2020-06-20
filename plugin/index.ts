@@ -64,7 +64,7 @@ export function compile(code: string, opts: IOptions) {
   let viewOptions: IOptions = Object.assign({}, defaultOptions, opts);
   let view = JSON.stringify({
     content: code,
-    ...viewOptions
+    ...viewOptions,
   });
   const response = core.dispatch(compile_str, textEncoder.encode(view));
   return JSON.parse(textDecoder.decode(response));

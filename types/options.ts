@@ -4,5 +4,5 @@ export interface IOptions {
   output_style: OutputStyle;
   precision: number;
   indented_syntax: boolean;
-  include_paths: string[]
+  include_paths: string[];
 }
