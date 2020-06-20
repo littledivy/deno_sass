@@ -1,4 +1,4 @@
-type OutputStyle = "compact" | "nested" | "compressed";
+export type OutputStyle = "compact" | "nested" | "compressed";
 
 export interface IOptions {
   output_style: OutputStyle;
