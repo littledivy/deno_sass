@@ -6,6 +6,8 @@ use deno_core::plugin_api::ZeroCopyBuf;
 use serde::Deserialize;
 use serde::Serialize;
 
+mod utils;
+
 #[no_mangle]
 pub fn deno_plugin_init(interface: &mut dyn Interface) {
     interface.register_op("compile_str", op_compile);
@@ -29,7 +31,7 @@ struct CompileResponse {
 fn op_compile(_interface: &mut dyn Interface, data: &[u8], _zero_copy: &mut [ZeroCopyBuf]) -> Op {
     let params: CompileArguments = serde_json::from_slice(data).unwrap();
     let opt = sass_rs::Options {
-        output_style: str_to_style(&params.output_style),
+        output_style: utils::str_to_style(&params.output_style),
         precision: params.precision,
         include_paths: params.include_paths,
         indented_syntax: params.indented_syntax,
@@ -53,12 +55,3 @@ fn op_compile(_interface: &mut dyn Interface, data: &[u8], _zero_copy: &mut [Zer
     Op::Sync(result_box)
 }
 
-fn str_to_style(style: &str) -> sass_rs::OutputStyle {
-    match style {
-        "nested" => sass_rs::OutputStyle::Nested,
-        "expanded" => sass_rs::OutputStyle::Expanded,
-        "compact" => sass_rs::OutputStyle::Compact,
-        "compressed" => sass_rs::OutputStyle::Compressed,
-        _ => sass_rs::OutputStyle::Nested,
-    }
-}
