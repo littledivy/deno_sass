@@ -1,11 +1,25 @@
-# deno_sass
+<br />
+<p align="center">
+  <a href="https://github.com/divy-work/deno_sass">
+    <img src="../assets/logo_light.png" alt="deno_sass logo" width="110">
+  </a>
 
-[![stars](https://img.shields.io/github/stars/divy-work/deno_sass)](https://github.com/divy-work/deno_sass/stargazers)
-[![issues](https://img.shields.io/github/issues/divy-work/deno_sass)](https://github.com/divy-work/deno-ciphers/issues)
-![deno version](deno_sass://img.shields.io/badge/deno-1.0.5-success)
-[![vr scripts](https://badges.velociraptor.run/flat.svg)](https://velociraptor.run)
+  <h3 align="center">deno_sass</h3>
 
-The Deno SASS library.
+  <p align="center">
+    High quality bindings to the sass_rs crate for Deno.
+ </p>
+ <p align="center">
+
+  [![stars](https://img.shields.io/github/stars/divy-work/deno_sass)](https://github.com/divy-work/deno_sass/stargazers)
+  [![issues](https://img.shields.io/github/issues/divy-work/deno_sass)](https://github.com/divy-work/deno_sass/issues)
+  ![deno version](https://img.shields.io/badge/deno-1.0.5-success)
+  [![vr scripts](https://badges.velociraptor.run/flat.svg)](https://velociraptor.run)
+ 
+ </p>
+</p>
+
+
 
 ## Example
 
@@ -46,6 +60,6 @@ $ deno run --unstable -A examples/compile.ts
 
 Pull request, issues and feedback are very welcome. Code style is formatted with `deno fmt` and commit messages are done following [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) spec.
 
-### Licence
+## Copyright
 
-Copyright 2020, Divy Srivastava. All rights reserved. MIT license.
+deno_sass is licensed under the MIT license. Please see the [LICENSE](LICENSE) file.
