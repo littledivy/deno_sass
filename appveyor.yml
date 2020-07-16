@@ -23,7 +23,7 @@ cache:
   - C:\Users\appveyor\.cargo\registry
   - target
 
-build: true
+build: false
 
 test_script:
   - cargo test
