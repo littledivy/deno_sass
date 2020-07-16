@@ -1,1 +1,0 @@
-{"name":"sass","version":"0.2.0","description":"The Sass Compiler bindings for Deno","stable":true,"files":["./README.md","./LICENSE","./mod.ts","./deps.ts","./plugin/**/*", "./types/**/*", "./examples/**/*"]}

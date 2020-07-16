@@ -1,0 +1,13 @@
+name: sass
+version: 0.3.0
+description: High quality sass compiler binding to Deno
+stable: true
+repository: https://github.com/divy-work/deno_sass
+files:
+- "./README.md"
+- "./LICENSE"
+- "./mod.ts"
+- "./deps.ts"
+- "./plugin/**/*"
+- "./types/**/*"
+- "./examples/**/*"
