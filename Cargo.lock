@@ -325,8 +325,6 @@ checksum = "71d301d4193d031abdd79ff7e3dd721168a9572ef3fe51a1517aba235bd8f86e"
 [[package]]
 name = "sass-rs"
 version = "0.2.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cabcf7c6e55053f359911187ac401409aad2dc14338cae972dec266fee486abd"
 dependencies = [
  "libc",
  "sass-sys",
@@ -335,8 +333,6 @@ dependencies = [
 [[package]]
 name = "sass-sys"
 version = "0.4.21"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0df9ac0fd0b8d62a99b9948094dcd56c441e3e10bf49f9b12da40b2183804908"
 dependencies = [
  "cc",
  "libc",
