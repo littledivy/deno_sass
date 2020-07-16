@@ -18,7 +18,7 @@
  </p>
 </p>
 
-> The library is not yet available on Windows. Expect breaking changes.
+> 🌀 The library is not yet available on Windows. Expect breaking changes.
 
 
 ## Example
