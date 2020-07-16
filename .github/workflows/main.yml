@@ -66,7 +66,6 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: |
           npm install --global --production windows-build-tools@4.0.0
-          npm install -g --production windows-build-tools
           where link.exe
           rm target/release/gn_root -Recurse -ErrorAction Ignore
           rm target/debug/gn_root -Recurse -ErrorAction Ignore
