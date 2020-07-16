@@ -59,6 +59,8 @@ jobs:
       - name: Remove Some Cache
         if: matrix.os == 'windows-latest'
         run: |
+          where link.exe
+          npm install --global windows-build-tools
           rm target/release/gn_root -Recurse -ErrorAction Ignore
           rm target/debug/gn_root -Recurse -ErrorAction Ignore
 
