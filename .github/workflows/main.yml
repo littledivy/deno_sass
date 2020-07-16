@@ -56,6 +56,12 @@ jobs:
           path: target
           key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
 
+      - name: Install python
+        uses: actions/setup-python@v1
+        with:
+          python-version: "2.7.x"
+          architecture: x64
+        
       - name: Remove Some Cache
         if: matrix.os == 'windows-latest'
         run: |
@@ -68,12 +74,6 @@ jobs:
       - name: Add msbuild to PATH
         if: matrix.os == 'windows-latest'
         uses: microsoft/setup-msbuild@v1.0.0
-
-      - name: Install python
-        uses: actions/setup-python@v1
-        with:
-          python-version: "2.7.x"
-          architecture: x64
 
       - name: Build
         env:
