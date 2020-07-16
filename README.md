@@ -18,6 +18,7 @@
  </p>
 </p>
 
+> The library is not yet available on Windows. Expect breaking changes.
 
 
 ## Example
