@@ -55,6 +55,7 @@ const core = Deno.core as {
 
 const {
   compile_str,
+  compile_file
 } = core.ops();
 
 const textDecoder = new TextDecoder();
@@ -67,6 +68,18 @@ export function compile(code: string, opts?: IOptions) {
     ...viewOptions,
   });
   const response = core.dispatch(compile_str, textEncoder.encode(view));
+  let res = JSON.parse(textDecoder.decode(response));
+  if (res.error) throw new Error(res.error);
+  return res;
+}
+
+export function compile_from_file(file: string, opts?: IOptions) {
+  let viewOptions: IOptions = Object.assign({}, defaultOptions, opts);
+  let view = JSON.stringify({
+    content: file,
+    ...viewOptions,
+  });
+  const response = core.dispatch(compile_file, textEncoder.encode(view));
   let res = JSON.parse(textDecoder.decode(response));
   if (res.error) throw new Error(res.error);
   return res;
