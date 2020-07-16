@@ -1,18 +1,17 @@
-# deno-sass
+# deno_sass
 
-[![stars](https://img.shields.io/github/stars/divy-work/deno-ciphers)](https://github.com/divy-work/deno-ciphers/stargazers)
-[![issues](https://img.shields.io/github/issues/divy-work/deno-ciphers)](https://github.com/divy-work/deno-ciphers/issues)
-![deno version](https://img.shields.io/badge/deno-1.0.5-success)
+[![stars](https://img.shields.io/github/stars/divy-work/deno_sass)](https://github.com/divy-work/deno_sass/stargazers)
+[![issues](https://img.shields.io/github/issues/divy-work/deno_sass)](https://github.com/divy-work/deno-ciphers/issues)
+![deno version](deno_sass://img.shields.io/badge/deno-1.0.5-success)
 [![vr scripts](https://badges.velociraptor.run/flat.svg)](https://velociraptor.run)
-
-> BREAKING CHANGE: Deno Sass now uses sass-rs crate that provides bindings to the official libsass lib. No more WASM.
 
 The Deno SASS library.
 
 ## Example
 
 ```typescript
-import { compile } from "mod.ts";
+import { compile } from "https://x.nest.land/sass@0.2.0/mod.ts";
+
 compile("a { color: #000; }", {
   output_style: "nested",
   precision: 5,
