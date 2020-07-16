@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/divy-work/deno_sass">
-    <img src="./assets/deno_sass.png" alt="deno_sass logo" width="110">
+    <img src="./assets/deno_sass.png" alt="deno_sass logo" width="310">
   </a>
   <h3 align="center">deno_sass</h3>
 
