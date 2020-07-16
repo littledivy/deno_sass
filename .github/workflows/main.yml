@@ -72,8 +72,7 @@ jobs:
           npm install --global --production windows-build-tools@4.0.0
           rm target/release/gn_root -Recurse -ErrorAction Ignore
           rm target/debug/gn_root -Recurse -ErrorAction Ignore
-          set "VS150COMNTOOLS=%PROGRAMFILES(X86)%\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build"
-          & "%VS150COMNTOOLS%\vcvarsall.bat" x64 -vcvars_ver=14.13
+          & "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 -vcvars_ver=14.13
 
       - name: Build
         env:
