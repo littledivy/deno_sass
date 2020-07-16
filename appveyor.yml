@@ -17,7 +17,7 @@ install:
   - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
   - rustc -Vv
   - cargo -V
-  - git submodule update --init
+  - git submodule update --init --recursive
 
 cache:
   - C:\Users\appveyor\.cargo\registry
