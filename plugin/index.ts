@@ -5,7 +5,7 @@ import { defaultOptions } from "../types/default.ts";
 const filenameBase = "deno_sass";
 
 const PLUGIN_URL_BASE =
-  "https://github.com/divy-work/deno-sass/releases/latest/download";
+  "https://github.com/divy-work/deno_sass/releases/latest/download";
 
 const isDev = Deno.env.get("DEV");
 
@@ -67,5 +67,7 @@ export function compile(code: string, opts?: IOptions) {
     ...viewOptions,
   });
   const response = core.dispatch(compile_str, textEncoder.encode(view));
-  return JSON.parse(textDecoder.decode(response));
+  let res = JSON.parse(textDecoder.decode(response));
+  if (res.error) throw new Error(res.error);
+  return res;
 }

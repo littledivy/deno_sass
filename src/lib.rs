@@ -22,7 +22,8 @@ struct CompileArguments {
 
 #[derive(Serialize)]
 struct CompileResponse {
-    result: String,
+    result: Option<String>,
+    error: Option<String>,
 }
 
 fn op_compile(_interface: &mut dyn Interface, data: &[u8], _zero_copy: &mut [ZeroCopyBuf]) -> Op {
@@ -33,9 +34,21 @@ fn op_compile(_interface: &mut dyn Interface, data: &[u8], _zero_copy: &mut [Zer
         include_paths: params.include_paths,
         indented_syntax: params.indented_syntax,
     };
-    let response = CompileResponse {
-        result: sass_rs::compile_string(&params.content, opt).unwrap(),
-    };
+    let mut response: CompileResponse;
+    match sass_rs::compile_string(&params.content, opt) {
+        Ok(r) => {
+            response = CompileResponse {
+                result: Some(r),
+                error: None,
+            };
+        }
+        Err(e) => {
+            response = CompileResponse {
+                result: None,
+                error: Some(e.to_string()),
+            };
+        }
+    }
     let result_box: Buf = serde_json::to_vec(&response).unwrap().into_boxed_slice();
     Op::Sync(result_box)
 }
